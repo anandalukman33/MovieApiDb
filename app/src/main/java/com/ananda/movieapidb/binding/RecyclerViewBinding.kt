@@ -8,6 +8,7 @@ import com.ananda.movieapidb.models.Resource
 import com.ananda.movieapidb.models.Review
 import com.ananda.movieapidb.models.Status
 import com.ananda.movieapidb.models.Video
+import com.ananda.movieapidb.models.entity.Genre
 import com.ananda.movieapidb.models.entity.Movie
 import com.ananda.movieapidb.models.entity.Person
 import com.ananda.movieapidb.models.entity.Tv
@@ -27,6 +28,14 @@ fun bindAdapterMovieList(view: RecyclerView, resource: Resource<List<Movie>>?) {
     view.bindResource(resource) {
         val adapter = view.adapter as? MovieListAdapter
         adapter?.addMovieList(it)
+    }
+}
+
+@BindingAdapter("adapterGenreList")
+fun bindAdapterGenreList(view: RecyclerView, resource: Resource<List<Genre>>?) {
+    view.bindResource(resource) {
+        val adapter = view.adapter as? GenreListAdapter
+        adapter?.addGenreList(it)
     }
 }
 
@@ -56,6 +65,18 @@ fun bindPersonPagination(view: RecyclerView, viewModel: MainActivityViewModel) {
         recyclerView = view,
         isLoading = { viewModel.getPeopleValues()?.status == Status.LOADING },
         loadMore = { viewModel.postPeoplePage(it) },
+        onLast = { false }
+    ).run {
+        currentPage = 1
+    }
+}
+
+@BindingAdapter("personPagination")
+fun bindGenrePagination(view: RecyclerView, viewModel: MainActivityViewModel) {
+    RecyclerViewPaginator(
+        recyclerView = view,
+        isLoading = { viewModel.getGenreValues()?.status == Status.LOADING },
+        loadMore = { viewModel.postGenrePage(it) },
         onLast = { false }
     ).run {
         currentPage = 1

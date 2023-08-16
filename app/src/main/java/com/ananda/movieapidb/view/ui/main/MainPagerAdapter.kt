@@ -11,9 +11,11 @@ class MainPagerAdapter(fm: FragmentManager) :
         return when (position) {
             0 -> MovieListFragment()
             1 -> TvListFragment()
-            else -> PersonListFragment()
+            2 -> PersonListFragment()
+            3 -> GenreListFragment()
+            else -> GenreListFragment()
         }
     }
 
-    override fun getCount() = 3
+    override fun getCount() = 4
 }

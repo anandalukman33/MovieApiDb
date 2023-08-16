@@ -1,6 +1,7 @@
 package com.ananda.movieapidb.di
 
 import com.ananda.movieapidb.di.annotations.FragmentScope
+import com.ananda.movieapidb.view.ui.main.GenreListFragment
 import com.ananda.movieapidb.view.ui.main.MovieListFragment
 import com.ananda.movieapidb.view.ui.main.PersonListFragment
 import com.ananda.movieapidb.view.ui.main.TvListFragment
@@ -21,4 +22,8 @@ abstract class MainActivityFragmentModule {
     @FragmentScope
     @ContributesAndroidInjector
     abstract fun contributePersonListFragment(): PersonListFragment
+
+    @FragmentScope
+    @ContributesAndroidInjector
+    abstract fun contributeGenreListFragment(): GenreListFragment
 }

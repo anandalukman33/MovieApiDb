@@ -43,6 +43,7 @@ class MainActivity : DaggerAppCompatActivity(), HasAndroidInjector {
                     R.id.action_one -> currentItem = 0
                     R.id.action_two -> currentItem = 1
                     R.id.action_three -> currentItem = 2
+                    R.id.action_four -> currentItem = 3
                 }
                 true
             }
